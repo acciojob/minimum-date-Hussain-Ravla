@@ -1,6 +1,5 @@
 function minDate(dates) {
-  return [...dates].sort()[0];
-}
+  return dates.reduce((min, current) => current < min ? current : min);
 }
 
 // Do not change the code

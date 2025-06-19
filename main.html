@@ -1,16 +1,30 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-	<link rel="stylesheet" href="styles.css">
+  <title>Minimum Date Finder</title>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+  <h2>Find Minimum Date</h2>
 
+  <label for="datesInput">Enter dates (one per line in YYYY/MM/DD format):</label><br>
+  <textarea id="datesInput" rows="6" cols="30"></textarea><br><br>
+
+  <button onclick="showMinDate()">Get Minimum Date</button>
+
+  <h3>Minimum Date:</h3>
+  <p id="result"></p>
+
+  <script>
+    function minDate(dates) {
+      return dates.reduce((min, current) => current < min ? current : min);
+    }
+
+    function showMinDate() {
+      const input = document.getElementById('datesInput').value;
+      const dates = input.split('\n').map(date => date.trim()).filter(date => date);
+      const result = minDate(dates);
+      document.getElementById('result').textContent = result;
+    }
+  </script>
 </body>
-
 </html>
